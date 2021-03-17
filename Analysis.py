@@ -95,14 +95,85 @@ cp3 = float(threes)/len(sum1)
 cp4 = float(fours)/len(sum1)
 cp5 = float(fives)/len(sum1)
 cp6 = float(sixes)/len(sum1)
-print(cp1)
-print(cp2)
-print(cp3)
-print(cp4)
-print(cp5)
-print(cp6)
-print(cp1+cp2+cp3+cp4+cp5+cp6)
 
 # initialize LLR distribution arays
 LLR0 = []
 LLR1 = []
+
+# loop over rolls for each experiment to find LLR
+for i in range(0, nexp0):
+    LogLikeRatio_0 = float(0)
+    for j in range(0, rolls_0):
+        
+        # the various prob. for H0
+        if sum0arr[i][j]==1:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+        elif sum0arr[i][j]==2:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+        elif sum0arr[i][j]==3:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+        elif sum0arr[i][j]==4:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+        elif sum0arr[i][j]==5:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+        else:
+            LogLikeRatio_0 -=log(Fraction(1,6))
+
+        # the various prob. for H1
+        if sum0arr[i][j]==1:
+            LogLikeRatio_0 -=log(cp1)
+        elif sum0arr[i][j]==2:
+            LogLikeRatio_0 -=log(cp2)
+        elif sum0arr[i][j]==3:
+            LogLikeRatio_0 -=log(cp3)
+        elif sum0arr[i][j]==4:
+            LogLikeRatio_0 -=log(cp4)
+        elif sum0arr[i][j]==5:
+            LogLikeRatio_0 -=log(cp5)
+        else:
+            LogLikeRatio_0 -=log(cp6)
+
+    LLR0.append(LogLikeRatio_0)
+
+for i in range(0, nexp1):
+    LogLikeRatio_1 = float(0)
+    for j in range(0, rolls_1):
+        
+        # the various prob. for H0
+        if sum1arr[i][j]==1:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+        elif sum1arr[i][j]==2:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+        elif sum1arr[i][j]==3:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+        elif sum1arr[i][j]==4:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+        elif sum1arr[i][j]==5:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+        else:
+            LogLikeRatio_1 -=log(Fraction(1,6))
+
+        # the various prob. for H1
+        if sum1arr[i][j]==1:
+            LogLikeRatio_1 -=log(cp1)
+        elif sum1arr[i][j]==2:
+            LogLikeRatio_1 -=log(cp2)
+        elif sum1arr[i][j]==3:
+            LogLikeRatio_1 -=log(cp3)
+        elif sum1arr[i][j]==4:
+            LogLikeRatio_1 -=log(cp4)
+        elif sum1arr[i][j]==5:
+            LogLikeRatio_1 -=log(cp5)
+        else:
+            LogLikeRatio_1 -=log(cp6)
+
+    LLR1.append(LogLikeRatio_1)
+
+# plotting code
+plt.figure()
+plt.hist(LLR0, bins=75, alpha=0.75, label="$\\mathbb{H}_{0}$")
+plt.hist(LLR1, bins=75, alpha=0.75, label="$\\mathbb{H}_{1}$")
+plt.legend(loc="upper right", shadow=True)
+
+plt.show()
+
