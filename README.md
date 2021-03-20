@@ -12,4 +12,10 @@ Please pipe these results to .txt files.
 
 #### Step 2
 
-kd;fl
+Pass the fair and unfair text files to Analysis.py, where "-input0 " specifies the fair file and "input1 " specifies the unfair file.
+
+For example: "python Analysis.py -input0 fair.txt -input1 unfair.txt"
+
+#### Optional
+
+The parameters of the posterior distributions can always be altered by changing what rate feeds into the "random.Exponential()" method or what mean feeds into the "random.box_muller()" method.
