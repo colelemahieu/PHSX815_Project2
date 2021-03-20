@@ -38,6 +38,20 @@ class Random:
     def rand(self):
         return 5.42101086242752217E-20 * self.int64()
 
+    # function returns a random double (0 to infty) according to an exponential distribution
+    def Exponential(self, beta=1.):
+      # make sure beta is consistent with an exponential
+      if beta <= 0.:
+        beta = 1.
+
+      R = self.rand();
+
+      while R <= 0.:
+        R = self.rand()
+
+      X = -log(R)/beta
+
+      return X
 
     # sample from a normal distribution using the box muller method
     def box_muller(self, mu=0.2, sigma=0.2, stored_val=0):
@@ -58,7 +72,7 @@ class Random:
                 
         
     # function returns a random integer (1-6) using the rand() function
-    # the probability for each number rolled can be tweaked in the argument
+    # this default function is a fair die
     def DiceRoll(self, p1=Fraction(1,6), p2=Fraction(1,6), p3=Fraction(1,6), p4=Fraction(1,6), p5=Fraction(1,6)):
         if p1 < 0. or p1 > 1. or p2 < 0. or p2 > 1. or p3 < 0. or p3 > 1. or p4 < 0. or p4 > 1. or p5 < 0. or p5 > 1.:
             return 1

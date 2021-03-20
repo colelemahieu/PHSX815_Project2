@@ -12,27 +12,32 @@ from Random import Random
 # instantiate our Random class
 random = Random()
 
+# generate a width from an exponential distribution for our probability gaussian
+sigma_exp = random.Exponential(10)
+while (sigma_exp>1):
+    sigma_exp = random.Exponential(10)
+
 # generate the probabilities for rolling numbers 1-6 using a normal distribution
 # This code guarantees the probabilities add up to 1
-p1 = random.box_muller()
-while (p1>1):
-    p1 = random.box_muller()
+p1 = random.box_muller(sigma=sigma_exp)
+while (p1>1 and p1<0):
+    p1 = random.box_muller(sigma=sigma_exp)
     
-p2 = random.box_muller()
-while ((p1+p2)>1):
-    p2 = random.box_muller()
+p2 = random.box_muller(sigma=sigma_exp)
+while ((p1+p2)>1 and p2<0):
+    p2 = random.box_muller(sigma=sigma_exp)
 
-p3 = random.box_muller()
-while ((p1+p2+p3)>1):
-    p3 = random.box_muller()
+p3 = random.box_muller(sigma=sigma_exp)
+while ((p1+p2+p3)>1 and p3<0):
+    p3 = random.box_muller(sigma=sigma_exp)
 
-p4 = random.box_muller()
-while ((p1+p2+p3+p4)>1):
-    p4 = random.box_muller()
+p4 = random.box_muller(sigma=sigma_exp)
+while ((p1+p2+p3+p4)>1 and p4<0):
+    p4 = random.box_muller(sigma=sigma_exp)
 
-p5 = random.box_muller()
-while ((p1+p2+p3+p4+p5)>1):
-    p5 = random.box_muller()
+p5 = random.box_muller(sigma_exp)
+while ((p1+p2+p3+p4+p5)>1 and p5<0):
+    p5 = random.box_muller(sigma_exp)
 
 p6 = 1-(p1+p2+p3+p4+p5)
 
@@ -61,10 +66,10 @@ for e in range(0,Nexp):
                 print(random.DiceRoll(p1,p2,p3,p4,p5), end=" ")
             print(" ")
 
-print(p1)
-print(p2)
-print(p3)
-print(p4)
-print(p5)
-print(p6)
-print(p1+p2+p3+p4+p5+p6)
+#print(p1)
+#print(p2)
+#print(p3)
+#print(p4)
+#print(p5)
+#print(p6)
+#print(p1+p2+p3+p4+p5+p6)

@@ -34,9 +34,6 @@ if __name__ == "__main__":
     # default number of experiments
     Nexp = 1
 
-    # output file defaults
-    #doOutputFile =
-
     # get number of rolls and experiments from the command line
     if '-Nroll' in sys.argv:
         p = sys.argv.index('-Nroll')
@@ -48,10 +45,6 @@ if __name__ == "__main__":
         Ne = int(sys.argv[p+1])
         if Ne > 0:
             Nexp = Ne
-    if '-output' in sys.argv:
-        p = sys.argv.index('-output')
-        OutputFileName = sys.argv[p+1]
-        doOutputFile = True
 
     # class instance of our Random class using seed
     random = Random(seed)
