@@ -12,7 +12,7 @@ Please pipe these results to .txt files.
 
 #### Step 2
 
-Pass the fair and unfair text files to Analysis.py, where "-input0 " specifies the fair file and "input1 " specifies the unfair file.
+Pass the fair and unfair text files to Analysis.py, where "-input0 " specifies the fair file and "input1 " specifies the unfair file. This makes Log Likelihood Ratio plots among other things.
 
 For example: "python Analysis.py -input0 fair.txt -input1 unfair.txt"
 
